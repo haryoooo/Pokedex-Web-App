@@ -5,8 +5,9 @@ This project is pokedex that contain an detail information from each of the poke
 ## Tools
 
 - ReactJS
-- React-Bootstrap
+- React Bootstrap
 - React-Redux
+- Redux-Thunk
 - Material UI
 - Axios
 - PokeAPI

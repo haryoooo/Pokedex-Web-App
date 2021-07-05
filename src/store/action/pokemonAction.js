@@ -28,9 +28,8 @@ export function fetchDetailsPokemon(id) {
     axios
       .get(`https://pokeapi.co/api/v2/pokemon/${id}`)
       .then((res) => {
-        console.log(res.data)
-        dispatch(loadDetailPokemon(res.data));
         dispatch(loadingPokemon(false))
+        dispatch(loadDetailPokemon(res.data));
       })
 
       .catch((err) => {

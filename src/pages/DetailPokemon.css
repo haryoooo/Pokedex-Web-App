@@ -33,6 +33,19 @@
 }
 
 .Capitalize {
-    padding: 20px;
     text-transform: capitalize;
+}
+
+.Type{
+    padding-top: 20px;
+    text-transform: capitalize;
+}
+
+@media (max-width: 600px) {
+
+    .DetailPokemon img {
+        margin: 50px auto;
+        width: 200px;
+        height: 200px;
+    }
 }

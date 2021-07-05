@@ -8,7 +8,7 @@ export default function CardComponent(props) {
 
   function goToDetails(id) {
     history.push(`/DetailPokemon/${id}`)
-    window.location.reload();
+    window.location.reload()
   }
 
   return (
