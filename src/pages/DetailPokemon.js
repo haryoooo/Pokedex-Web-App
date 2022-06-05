@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ProgressComponent from "../components/ProgressComponent";
-import HomeNavComponent from "../components/HomeNavComponent"
+import HomeNavComponent from "../components/HomeNavComponent";
 import { pokemonType } from "../helpers/pokemonTypeColor";
 import { ProgressBar, ListGroup, Container } from "react-bootstrap";
 import { useHistory, useParams } from "react-router-dom";
@@ -11,12 +11,12 @@ import "./DetailPokemon.css";
 export default function DetailPokemon() {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const history = useHistory()
+  const history = useHistory();
   const { pokemonDetail, isLoading } = useSelector((state) => state);
 
   function goToHomepage() {
-    history.push("/")
-    window.location.reload()
+    history.push("/");
+    // window.location.reload()
   }
 
   useEffect(() => {
@@ -39,11 +39,18 @@ export default function DetailPokemon() {
       {pokemonDetail.map((value) => {
         return (
           <div className="DetailPokemon">
-            <img src={value.sprites.other["official-artwork"].front_default} alt="imgs" />
+            <img
+              src={value.sprites.other["official-artwork"].front_default}
+              alt="imgs"
+            />
             <div className="PokedexData">
               <ListGroup variant="flush">
                 <h1 style={{ marginBottom: 30 }}>Pokedex Data</h1>
-                <ListGroup.Item><div className="BaseStatsText">Name<h5 className="Capitalize">{value.name}</h5></div></ListGroup.Item>
+                <ListGroup.Item>
+                  <div className="BaseStatsText">
+                    Name<h5 className="Capitalize">{value.name}</h5>
+                  </div>
+                </ListGroup.Item>
                 <ListGroup.Item>
                   Type{" "}
                   <h6 className="Type">
@@ -68,19 +75,34 @@ export default function DetailPokemon() {
                     })}
                   </h6>
                 </ListGroup.Item>
-                <ListGroup.Item>Height<h5>{value.height} m</h5></ListGroup.Item>
-                <ListGroup.Item>Weight<h5>{value.weight} Kg</h5></ListGroup.Item>
-                <ListGroup.Item>National No<h5>{value.order}</h5></ListGroup.Item>
+                <ListGroup.Item>
+                  Height<h5>{value.height} m</h5>
+                </ListGroup.Item>
+                <ListGroup.Item>
+                  Weight<h5>{value.weight} Kg</h5>
+                </ListGroup.Item>
+                <ListGroup.Item>
+                  National No<h5>{value.order}</h5>
+                </ListGroup.Item>
               </ListGroup>
             </div>
 
             <Container>
-              <h3 style={{ paddingLeft: 20, marginBottom: 40 }}>Base Statistics</h3>
+              <h3 style={{ paddingLeft: 20, marginBottom: 40 }}>
+                Base Statistics
+              </h3>
               {value.stats.map((el) => {
                 return (
                   <div>
                     <ListGroup variant="flush">
-                      <ListGroup.Item className="Capitalize"><h6 style={{ marginBottom: 20 }}>{el.stat.name} : </h6> <ProgressBar variant="success" now={el.base_stat} label={`${el.base_stat}%`} /></ListGroup.Item>
+                      <ListGroup.Item className="Capitalize">
+                        <h6 style={{ marginBottom: 20 }}>{el.stat.name} : </h6>{" "}
+                        <ProgressBar
+                          variant="success"
+                          now={el.base_stat}
+                          label={`${el.base_stat}%`}
+                        />
+                      </ListGroup.Item>
                     </ListGroup>
                   </div>
                 );
@@ -88,12 +110,23 @@ export default function DetailPokemon() {
             </Container>
 
             <div>
-              <h3 style={{ marginLeft: 20, marginTop: 50, padding: 10, width: "fit-content" }}>Moves</h3>
+              <h3
+                style={{
+                  marginLeft: 20,
+                  marginTop: 50,
+                  padding: 10,
+                  width: "fit-content",
+                }}
+              >
+                Moves
+              </h3>
               <div className="Moves">
                 {value.moves.map((el, idx) => {
                   return (
-                    <ListGroup horizontal={'md'} className="my-4" key={idx}>
-                      <ListGroup.Item className="Capitalize">{el.move.name}</ListGroup.Item>
+                    <ListGroup horizontal={"md"} className="my-4" key={idx}>
+                      <ListGroup.Item className="Capitalize">
+                        {el.move.name}
+                      </ListGroup.Item>
                     </ListGroup>
                   );
                 })}

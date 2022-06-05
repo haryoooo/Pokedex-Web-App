@@ -1,0 +1,22 @@
+.MainpageDisplay {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: auto 50px;
+    padding: 50px;
+}
+
+.isLoadingWrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+}
+
+.isLoading {
+    border: 1px solid lightgray;
+    min-width: 15rem;
+    min-height: 14rem;
+    border-radius: 10px;
+    margin: 20px;
+    padding: 30px;
+}

@@ -1,68 +1,42 @@
 import React, { useEffect, useState } from "react";
 import "./Home.css";
-import axios from "axios";
 import MainpageDisplayComponent from "../components/MainpageDisplayComponent";
 import HeaderComponent from "../components/HeaderComponent";
-import SearchBarComponent from "../components/SearchBarComponent"
-import {url} from '../helpers/UrlConfig'
+import SearchBarComponent from "../components/SearchBarComponent";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchPokemon } from "../store/action/pokemonAction";
 
 export default function Home() {
-  const [detailPokemon, setDetailpokemon] = useState([]);
-  const [filteredName, setFilteredName] = useState("")
-  const [filteredPokemon, setFilteredPokemon] = useState("")
+  const dispatch = useDispatch();
+  const { pokemon, isLoading } = useSelector((state) => state);
+  const [filteredName, setFilteredName] = useState("");
+  const [filteredPokemon, setFilteredPokemon] = useState("");
 
-
-  function fetchPokemon() {
-    axios
-      .get(`${url}`)
-      .then((res) => {
-        let data = res.data;;
-        data.results.map((element) => {
-          getDataPokemon(element);
-        });
-      })
-
-      .catch((err) => {
-        console.log(err);
-      });
+  function filterByName(e) {
+    setFilteredName(e.target.value);
+    filterPokemon(e.target.value);
   }
 
-  function getDataPokemon(pokemon) {
-    axios
-      .get(`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`)
-      .then((res) => {
-        setDetailpokemon((currentList) => [...currentList, res.data]);
-      })
+  function filterPokemon(text) {
+    let filtersPokemon = pokemon.filter((value) => {
+      return value.name.toLowerCase().includes(text.toLowerCase());
+    });
 
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-
-  function filterByName(e){
-    setFilteredName(e.target.value)
-    filterPokemon(e.target.value)
-  }
-
-  function filterPokemon(text){
-    let filtersPokemon = detailPokemon.filter(value=>{
-      return value.name.toLowerCase().includes(text.toLowerCase())
-    })
-
-    setFilteredPokemon(filtersPokemon)
+    setFilteredPokemon(filtersPokemon);
   }
 
   useEffect(() => {
-    fetchPokemon();
+    dispatch(fetchPokemon());
   }, []);
 
-    return (
-      <>
-        <HeaderComponent />
-        <SearchBarComponent filterByName={filterByName} />
-        <MainpageDisplayComponent 
-          detailPokemon={filteredName ? filteredPokemon : detailPokemon}
-        />
-      </>
-    );
-  }
+  return (
+    <>
+      {console.log(pokemon)}
+      <HeaderComponent />
+      <SearchBarComponent filterByName={filterByName} />
+      <MainpageDisplayComponent
+        pokemon={filteredName ? filteredPokemon : pokemon}
+      />
+    </>
+  );
+}

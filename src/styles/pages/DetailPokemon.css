@@ -1,0 +1,51 @@
+.BaseStats {
+    padding: 20px;
+}
+
+.Moves {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    justify-content: center;
+}
+
+.Move{
+    padding: 20px
+}
+
+.DetailPokemon {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.PokedexData{
+    padding: 50px;
+}
+
+.PokedexData h1{
+    font-weight: bold;
+}
+
+.DetailPokemon img {
+    margin: 100px auto;
+    width: 400px;
+    height: 500px;
+}
+
+.Capitalize {
+    text-transform: capitalize;
+}
+
+.Type{
+    padding-top: 20px;
+    text-transform: capitalize;
+}
+
+@media (max-width: 600px) {
+
+    .DetailPokemon img {
+        margin: 50px auto;
+        width: 200px;
+        height: 200px;
+    }
+}
