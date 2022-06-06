@@ -1,5 +1,4 @@
 export const pokemonType = {
-
     bug : "#A8B820",
     ice : "	#98D8D8",
     normal : "#A8A878",

@@ -1,13 +1,13 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    '& > *': {
+    "& > *": {
       margin: theme.spacing(2),
     },
-    fontSize: 10
+    fontSize: 10,
   },
 }));
 
@@ -16,9 +16,14 @@ export default function ButtonComponent(props) {
 
   return (
     <div className={classes.root}>
-      <Button variant="contained" size="medium" color="primary" onClick={props.goToDetails}>
-         Go To Details
-    </Button>
+      <Button
+        variant="contained"
+        size="medium"
+        color="primary"
+        onClick={props.goToDetails}
+      >
+        Go To Details
+      </Button>
     </div>
   );
 }

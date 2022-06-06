@@ -1,14 +1,13 @@
 import React from "react";
-import "./CardComponent.css";
+import "../styles/components/CardComponent.css";
 import ButtonComponent from "./ButtonComponent";
 import { useHistory } from "react-router-dom";
 
 export default function CardComponent(props) {
-  const history = useHistory()
+  const history = useHistory();
 
   function goToDetails(id) {
-    history.push(`/DetailPokemon/${id}`)
-    window.location.reload()
+    history.push(`/DetailPokemon/${id}`);
   }
 
   return (
@@ -17,7 +16,7 @@ export default function CardComponent(props) {
       <h5>{props.type}</h5>
       <img src={props.sprites} />
       <>
-        <ButtonComponent goToDetails={()=>goToDetails(props.id)} />
+        <ButtonComponent goToDetails={() => goToDetails(props.id)} />
       </>
     </div>
   );

@@ -5,8 +5,8 @@
 .Moves {
     display: flex;
     flex-wrap: wrap;
-    padding: 20px;
-    justify-content: center;
+    justify-content: flex-start;
+    margin-left: 10px;
 }
 
 .Move{

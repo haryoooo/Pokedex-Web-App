@@ -6,17 +6,16 @@ import { pokemonType } from "../helpers/pokemonTypeColor";
 import { ProgressBar, ListGroup, Container } from "react-bootstrap";
 import { useHistory, useParams } from "react-router-dom";
 import { fetchDetailsPokemon } from "../store/action/pokemonAction";
-import "./DetailPokemon.css";
+import "../styles/pages/DetailPokemon.css";
 
 export default function DetailPokemon() {
   const { id } = useParams();
+  const { pokemonDetail, isLoading } = useSelector((state) => state);
   const dispatch = useDispatch();
   const history = useHistory();
-  const { pokemonDetail, isLoading } = useSelector((state) => state);
 
   function goToHomepage() {
     history.push("/");
-    // window.location.reload()
   }
 
   useEffect(() => {
@@ -123,7 +122,12 @@ export default function DetailPokemon() {
               <div className="Moves">
                 {value.moves.map((el, idx) => {
                   return (
-                    <ListGroup horizontal={"md"} className="my-4" key={idx}>
+                    <ListGroup
+                      style={{ margin: 10 }}
+                      horizontal={"md"}
+                      className="my-4"
+                      key={idx}
+                    >
                       <ListGroup.Item className="Capitalize">
                         {el.move.name}
                       </ListGroup.Item>

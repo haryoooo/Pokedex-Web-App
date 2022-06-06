@@ -19,8 +19,11 @@ export default (state = initialState, action) => {
       };
 
     case LOAD_DETAIL_POKEMON:
+      let pokemon = [];
+      pokemon.push(action.payload);
+
       return {
-        pokemonDetail: state.pokemonDetail.concat(action.payload)
+        pokemonDetail: pokemon,
       };
 
     case LOADING_POKEMON:

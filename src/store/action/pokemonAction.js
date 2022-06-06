@@ -33,7 +33,7 @@ export function fetchPokemon() {
     axios
       .get(`${url}`)
       .then((res) => {
-        Promise.all(res.data.results.map((val) => fetch(val.url)))
+        Promise.all(res.data?.results?.map((val) => fetch(val.url)))
           .then((response) => Promise.all(response.map((ress) => ress.json())))
           .then((json) => dispatch(loadAllPokemon(json)));
         dispatch(loadingPokemon(false));

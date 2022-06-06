@@ -2,3 +2,16 @@
     width: fit-content;
     margin: 50px auto;
 }
+
+.goBackButton {
+    border: 1px solid black;
+    border-radius: 10px;
+    width: fit-content;
+    margin-top: 20px;
+    padding: 5px;
+}
+
+.goBackButton:active {
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
