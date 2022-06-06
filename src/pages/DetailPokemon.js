@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import ProgressComponent from "../components/ProgressComponent";
+import LoadingComponent from "../components/LoadingComponent";
 import HomeNavComponent from "../components/HomeNavComponent";
 import { pokemonType } from "../helpers/pokemonTypeColor";
 import { ProgressBar, ListGroup, Container } from "react-bootstrap";
@@ -23,11 +23,7 @@ export default function DetailPokemon() {
   }, []);
 
   if (isLoading) {
-    return (
-      <div>
-        <ProgressComponent />
-      </div>
-    );
+    return <LoadingComponent isGoBack={goToHomepage} isDetail={1} />;
   }
 
   return (

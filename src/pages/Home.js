@@ -31,7 +31,6 @@ export default function Home() {
 
   return (
     <Fragment>
-      {console.log(filteredName)}
       <HeaderComponent />
       <SearchBarComponent filterByName={filterByName} />
       <MainpageDisplayComponent

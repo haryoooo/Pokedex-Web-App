@@ -1,8 +1,8 @@
 import React from "react";
 import CardComponent from "./CardComponent";
+import LoadingComponent from "./LoadingComponent";
 import EmptyPokemon from "../assets/pokemon-sad.png";
 import "../styles/components/MainpageDisplayComponent.css";
-import LoadingComponent from "./LoadingComponent";
 
 export default function MainpageDisplayComponent(props) {
   return (
